@@ -1,0 +1,7 @@
+<!--HTML en donde notificamos al usuario que se agrgó correctamente al género musical-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">New genre added!</h1>
+<a class="btn btn-primary" href="{% url 'GenreForm' %}">Add a new genre</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+<!--HTML donde podemos buscar por nombre de géneros musicales-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Genres</h1>
+<form action="../genreResult/" method="GET">
+    <input type="string" name="name" placeholder="Search a genre!">
+    <input type="submit" value="Search">
+</form>
+{% endblock %}

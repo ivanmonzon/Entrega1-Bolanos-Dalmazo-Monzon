@@ -1,0 +1,10 @@
+<!--HTML donde podemos buscar por nombre de instrumentos musicales-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Instruments</h1>
+<form action="../instrumentResult/" method="GET">
+    <input type="string" name="name" placeholder="Search an instrument!">
+    <input type="submit" value="Search">
+</form>
+{% endblock %}
