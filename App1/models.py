@@ -4,6 +4,8 @@ from django.db import models
 class Artist(models.Model):
     name=models.CharField(max_length=40)
     nacionality=models.CharField(max_length=40)
+    def __str__(self):
+        return f"Name: {self.name} - Nacionality: {self.nacionality}"
 
 class Label(models.Model):
     name=models.CharField(max_length=40)
