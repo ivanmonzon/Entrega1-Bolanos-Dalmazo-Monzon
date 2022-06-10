@@ -116,4 +116,15 @@ def genreResult(request):
         answer = "You didn't sent any data"
     return HttpResponse(answer)
 
+def listArtists(request):
+    listArtists = Artist.objects.all()
+    context = {"listArtists":listArtists}
+    return render(request, "App1/listArtists.html", context)
+
+def deleteArtist(request, artist_name):
+    artist = Artist.objects.get(name=artist_name)
+    artist.delete()
+    listArtists = Artist.objects.all()
+    context = {"listArtists":listArtists}
+    return render(request, "App1/listArtists.html", context)
 
