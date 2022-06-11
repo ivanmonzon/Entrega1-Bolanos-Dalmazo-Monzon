@@ -1,5 +1,4 @@
 from django.db import models
-
 # Acá creamos los modelos necesarios con sus atributos, elegimos dos por cada clase.
 class Artist(models.Model):
     name=models.CharField(max_length=40)
@@ -12,6 +11,7 @@ class Label(models.Model):
     country=models.CharField(max_length=40)
     def __str__(self):
         return f"Name: {self.name} - Country: {self.country}"
+
 
 class Instrument(models.Model):
     name=models.CharField(max_length=40)

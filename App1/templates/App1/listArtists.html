@@ -6,6 +6,7 @@
     <li>{{artist}}</li>
     <button>
         <a href="{% url 'DeleteArtist' artist.name %}">Delete</a>
+        <a href="{% url 'UpdateArtist' artist.name %}">Update</a>
     </button>
 {% endfor %}    
 {% endblock %}

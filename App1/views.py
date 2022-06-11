@@ -1,9 +1,14 @@
+from audioop import reverse
 from django.shortcuts import render
 #Importamos los modelos
 from App1.models import Artist, Label, Instrument, Genre
 from django.http import HttpResponse
 #importamos los formularios
 from App1.forms import ArtistForm, LabelForm, InstrumentForm, GenreForm
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 # Empezamos a crear las vistas necesarias
 def index(request):
     return render(request, "App1/index.html")
@@ -38,7 +43,7 @@ def artistAdded(request):
 def labels(request):
     return render(request,"App1/labels.html")
 #Vista para crear el formulario de carga de labels
-def labelForm(request):
+def labelForm(request): #VIEJO, el nuevo es label_form que utiliza el CreateView
     if request.method == 'POST':
         myForm = LabelForm(request.POST)
         if myForm.is_valid():
@@ -121,10 +126,26 @@ def listArtists(request):
     context = {"listArtists":listArtists}
     return render(request, "App1/listArtists.html", context)
 
-def deleteArtist(request, artist_name):
-    artist = Artist.objects.get(name=artist_name)
-    artist.delete()
-    listArtists = Artist.objects.all()
-    context = {"listArtists":listArtists}
-    return render(request, "App1/listArtists.html", context)
+class LabelList(ListView):
+    model = Label
+    template_name = "App1/listLabels.html"
+
+class LabelDetail(DetailView):
+    model = Label
+    template_name = "App1/label_detail.html"
+
+class LabelCreate(CreateView):
+    model = Label
+    success_url = reverse_lazy('LabelAdded')
+    fields = ['name', 'country']
+
+class LabelUpdate(UpdateView):
+    model = Label
+    success_url = reverse_lazy('listLabels')
+    fields = ['name', 'country']
+
+class LabelDelete(DeleteView):
+    model = Label
+    success_url = reverse_lazy('listLabels')
+
 
