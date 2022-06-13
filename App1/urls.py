@@ -1,6 +1,7 @@
 #Acá importamos el path y las vistas
 from django.urls import path
 from App1 import views
+from django.contrib.auth.views import LogoutView
 
 #declaramos los urls para cada vista
 urlpatterns = [
@@ -27,4 +28,7 @@ urlpatterns = [
     path('label_form/', views.LabelCreate.as_view(), name='LabelCreate'),
     path('label_update/<pk>', views.LabelUpdate.as_view(), name='LabelUpdate'), 
     path('label_delete/<pk>', views.LabelDelete.as_view(), name='LabelDelete'),
+    path('login/', views.login_request, name='Login'),
+    path('sign_up/', views.sign_up, name = 'SignUp'),
+    path('logout/', LogoutView.as_view(template_name='App1/logout.html'), name = 'Logout'),
 ]

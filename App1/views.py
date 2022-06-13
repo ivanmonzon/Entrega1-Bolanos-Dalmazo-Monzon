@@ -4,12 +4,17 @@ from django.shortcuts import render
 from App1.models import Artist, Label, Instrument, Genre
 from django.http import HttpResponse
 #importamos los formularios
-from App1.forms import ArtistForm, LabelForm, InstrumentForm, GenreForm
+from App1.forms import ArtistForm, LabelForm, InstrumentForm, GenreForm, UserRegisterForm
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 # Empezamos a crear las vistas necesarias
+
 def index(request):
     return render(request, "App1/index.html")
 #Comenzamos con las vistas relacionados a los artistas, en esta primera view tenemos la opción de buscar al artista
@@ -25,6 +30,7 @@ def artistResult(request):
         answer = "You didn't sent any data"
     return HttpResponse(answer)
 #Vista para crear el formulario de carga de artistas
+@login_required
 def artistForm(request):
     if request.method == 'POST':
         myForm = ArtistForm(request.POST)
@@ -43,6 +49,7 @@ def artistAdded(request):
 def labels(request):
     return render(request,"App1/labels.html")
 #Vista para crear el formulario de carga de labels
+@login_required
 def labelForm(request): #VIEJO, el nuevo es label_form que utiliza el CreateView
     if request.method == 'POST':
         myForm = LabelForm(request.POST)
@@ -70,6 +77,7 @@ def labelResult(request):
 def instruments(request):
     return render(request,"App1/instruments.html")
 #Vista para crear el formulario de carga de instrumentos
+@login_required
 def instrumentForm(request):
     if request.method == 'POST':
         myForm = InstrumentForm(request.POST)
@@ -97,6 +105,7 @@ def instrumentResult(request):
 def genres(request):
     return render(request,"App1/genres.html")
 #Vista para crear el formulario de carga de géneros musicales
+@login_required
 def genreForm(request):
     if request.method == 'POST':
         myForm = GenreForm(request.POST)
@@ -130,22 +139,50 @@ class LabelList(ListView):
     model = Label
     template_name = "App1/listLabels.html"
 
-class LabelDetail(DetailView):
+class LabelDetail(LoginRequiredMixin, DetailView):
     model = Label
     template_name = "App1/label_detail.html"
 
-class LabelCreate(CreateView):
+class LabelCreate(LoginRequiredMixin,CreateView):
     model = Label
     success_url = reverse_lazy('LabelAdded')
     fields = ['name', 'country']
 
-class LabelUpdate(UpdateView):
+class LabelUpdate(LoginRequiredMixin,UpdateView):
     model = Label
     success_url = reverse_lazy('listLabels')
     fields = ['name', 'country']
 
-class LabelDelete(DeleteView):
+class LabelDelete(LoginRequiredMixin,DeleteView):
     model = Label
     success_url = reverse_lazy('listLabels')
 
+def login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data = request.POST)
+        if form.is_valid():
+            user = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            auth = authenticate(username=user, password=password)
+
+            if auth is not None:
+                login(request,auth)
+                return render(request,"App1/index.html", {"message":f"Welcome {user}!"})
+        else:
+            return render(request,"App1/index.html", {"message":"Error, wrong username or password"})                    
+    form = AuthenticationForm()
+    return render(request,"App1/login.html", {'form':form})
+
+def sign_up(request):
+    if request.method == "POST":
+        #form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.cleaned_data['username']
+            form.save()
+            return render(request,"App1/index.html", {"message":"User created"})
+    else:
+        #form = UserCreationForm()
+        form = UserRegisterForm()
+    return render(request, "App1/sign_up.html", {'form':form})             
 
