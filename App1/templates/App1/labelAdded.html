@@ -3,5 +3,6 @@
 {% load static %}
 {% block changingContent %}
 <h1 class="mb-5">New label added!</h1>
-<a class="btn btn-primary" href="{% url 'LabelForm' %}">Add a new label</a>
+<a class="btn btn-primary" href="{% url 'listLabels' %}">List of Labels</a> 
+<a class="btn btn-primary" href="{% url 'LabelCreate' %}">Add a new Label</a>
 {% endblock %}
