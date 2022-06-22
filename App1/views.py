@@ -130,10 +130,6 @@ def genreResult(request):
         answer = "You didn't sent any data"
     return HttpResponse(answer)
 
-def listArtists(request):
-    listArtists = Artist.objects.all()
-    context = {"listArtists":listArtists}
-    return render(request, "App1/listArtists.html", context)
 
 class LabelList(ListView):
     model = Label

@@ -22,7 +22,6 @@ urlpatterns = [
     path('instrumentForm/', views.instrumentForm, name = "InstrumentForm"),
     path('instrumentAdded/', views.instrumentAdded, name="InstrumentAdded"),
     path('instrumentResult/', views.instrumentResult),
-    path('listArtists/', views.listArtists, name="listArtists"),
     path('listLabels/', views.LabelList.as_view(), name='listLabels'),
     path('label_detail/<pk>', views.LabelDetail.as_view(), name='LabelDetail'),
     path('label_form/', views.LabelCreate.as_view(), name='LabelCreate'),

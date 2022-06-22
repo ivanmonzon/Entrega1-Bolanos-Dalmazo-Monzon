@@ -6,7 +6,7 @@ class ArtistForm(forms.Form):
     name = forms.CharField()
     nacionality = forms.CharField()
 
-class LabelForm(forms.Form):
+class LabelForm(forms.Form): #No se utiliza más, ahora utilizamos LabelCreate en views
     name = forms.CharField()
     country = forms.CharField()
 
