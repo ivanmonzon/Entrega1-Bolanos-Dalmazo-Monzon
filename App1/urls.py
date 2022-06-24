@@ -31,3 +31,4 @@ urlpatterns = [
     path('sign_up/', views.sign_up, name = 'SignUp'),
     path('logout/', LogoutView.as_view(template_name='App1/logout.html'), name = 'Logout'),
 ]
+
