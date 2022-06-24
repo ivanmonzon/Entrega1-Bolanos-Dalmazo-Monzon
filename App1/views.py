@@ -18,6 +18,10 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, "App1/index.html")
 #Comenzamos con las vistas relacionados a los artistas, en esta primera view tenemos la opción de buscar al artista
+
+def error_404_view(request, exception):
+    return render(request, "App1/404.html")
+
 def artists(request):
     return render(request, "App1/artists.html")
 #En esta vista nos arroja el resultado de la busqueda de la vista de arriba
