@@ -1,0 +1,22 @@
+<!--En este HTML nos trae los resultados de la búsqueda de instrumentos musicales-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Instruments results</h1>
+<p>You've searched data from the Instrument: {{name}}</p>
+{% if instruments %}
+<ul>
+{% for instrument in instruments %}
+    <li>Name: {{instrument.name}}</li>
+    <li>Type: {{instrument.type}}</li> 
+{% endfor %}        
+</ul>
+{% else %}
+<p>No results!</p>
+{% endif %}
+<p>Wanna search another Instrument?</p>
+<form action="../instrumentResult/" method="GET">
+    <input type="string" name="name" placeholder="Search an instrument!">
+    <input type="submit" value="Search">
+</form>
+{% endblock %}

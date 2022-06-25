@@ -1,0 +1,22 @@
+<!--En este HTML nos trae los resultados de la búsqueda de artistas-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Artists results</h1>
+<p>You've searched data from the Artist: {{name}}</p>
+{% if artists %}
+<ul>
+{% for artist in artists %}
+    <li>Name: {{artist.name}}</li>
+    <li>Country: {{artist.nacionality}}</li>
+{% endfor %}        
+</ul>
+{% else %}
+<p>No results!</p>
+{% endif %}
+<p>Wanna search another Artist?</p>
+<form action="../artistResult/" method="GET">
+    <input type="string" name="name" placeholder="Search an artist!">
+    <input type="submit" value="Search">
+</form>
+{% endblock %}

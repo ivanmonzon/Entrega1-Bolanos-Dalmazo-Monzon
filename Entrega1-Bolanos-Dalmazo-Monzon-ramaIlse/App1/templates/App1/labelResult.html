@@ -1,0 +1,22 @@
+<!--En este HTML nos trae los resultados de la búsqueda de labels o sellos discográficos-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Labels results</h1>
+<p>You've searched data from the Label: {{name}}</p>
+{% if labels %}
+<ul>
+{% for label in labels %}
+    <li>Name: {{label.name}}</li>
+    <li>Country: {{label.country}}</li>
+{% endfor %}        
+</ul>
+{% else %}
+<p>No results!</p>
+{% endif %}
+<p>Wanna search another Label?</p>
+<form action="../labelResult/" method="GET">
+    <input type="string" name="name" placeholder="Search a label!">
+    <input type="submit" value="Search">
+</form>
+{% endblock %}

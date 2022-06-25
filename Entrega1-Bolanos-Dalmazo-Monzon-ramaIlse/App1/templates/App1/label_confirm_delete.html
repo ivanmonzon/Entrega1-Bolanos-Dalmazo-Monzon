@@ -1,0 +1,9 @@
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Listing Labels!</h1>
+<form method="POST">{% csrf_token %}
+    You are about to delete the Label {{object}}<br> Click on Delete to confirm
+    <input type="submit" value="Delete"></input>
+</form> 
+{% endblock %}

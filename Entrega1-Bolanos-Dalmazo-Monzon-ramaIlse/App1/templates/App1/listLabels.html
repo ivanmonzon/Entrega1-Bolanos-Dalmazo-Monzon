@@ -1,0 +1,17 @@
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Listing Labels!</h1>
+<ul>
+    {% for label in object_list %}
+        <li>
+            <p>Name: {{label.name}}</p>
+            <p>
+                    <a class="btn-outline-light mb-3" href="{% url 'LabelDetail' label.id %}">Detail</a>
+                    <a class="btn-outline-light mb-3" href="{% url 'LabelUpdate' label.id %}">Update</a>
+                    <a class="btn-outline-light mb-3" href="{% url 'LabelDelete' label.id %}">Delete</a>
+            </p>    
+        </li>
+    {% endfor %}
+</ul>    
+{% endblock %}

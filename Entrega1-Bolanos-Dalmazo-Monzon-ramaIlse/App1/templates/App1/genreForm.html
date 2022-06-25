@@ -1,0 +1,12 @@
+<!--Formulario para dar de alta un género musical nuevo-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Add a new Genre!</h1>
+<form action="" method="POST">{% csrf_token %}
+    <table>
+        {{ myForm.as_table }}
+    </table>
+    <input type="submit" value="Add">
+</form>
+{% endblock %}

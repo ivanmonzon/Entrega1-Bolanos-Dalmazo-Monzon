@@ -1,0 +1,8 @@
+<!--HTML en donde notificamos al usuario que se agrgó correctamente al artista-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">New Artist added!</h1>
+<a class="btn btn-primary" href="{% url 'listArtist' %}">List of Artist</a> 
+<a class="btn btn-primary" href="{% url 'ArtistForm' %}">Add a new Artist</a>
+{% endblock %}

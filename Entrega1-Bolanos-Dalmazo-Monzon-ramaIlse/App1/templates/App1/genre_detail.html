@@ -1,0 +1,10 @@
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Genre Detail</h1>
+<p>Name: <i>{{ genre.name }}</i></p>
+<p>Country: <i>{{ genre.country_of_origin }}</i></p>
+<p>
+    <a class="btn-outline-light mb-3" href="{% url 'listGenre' %}">Back</a>
+</p>     
+{% endblock %}

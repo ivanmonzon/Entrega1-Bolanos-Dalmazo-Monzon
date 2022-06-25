@@ -1,0 +1,8 @@
+<!--HTML en donde notificamos al usuario que se agrgó correctamente al instrumento musical-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">New Instrument added!</h1>
+<a class="btn btn-primary" href="{% url 'listInstrument' %}">List of Instrument</a> 
+<a class="btn btn-primary" href="{% url 'InstrumentForm' %}">Add a new Instrument</a>
+{% endblock %}

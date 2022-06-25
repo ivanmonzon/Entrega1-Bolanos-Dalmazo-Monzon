@@ -1,0 +1,11 @@
+<!--HTML donde podemos buscar por nombre de sello discográfico o label-->
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Labels</h1>
+<a class="btn-outline-light mb-3" href="{% url 'listLabels' %}">List of Labels</a>  
+<form action="../labelResult/" method="GET">
+    <input type="string" name="name" placeholder="Search a label!">
+    <input type="submit" value="Search">
+</form>
+{% endblock %}
