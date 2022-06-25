@@ -27,7 +27,9 @@
                 <a class="navbar-brand" href="{% url 'Artists' %}">Artists</a>
                 <a class="navbar-brand" href="{% url 'Labels' %}">Labels</a>
                 <a class="navbar-brand" href="{% url 'Instruments' %}">Instruments</a>
-                <a class="navbar-brand" href="{% url 'Genres' %}">Genres</a>                                             
+                <a class="navbar-brand" href="{% url 'Genres' %}">Genres</a>
+                <a class="btn btn-success navbar-brand" href="{% url 'SignUp' %}">SIGN UP</a>
+                <a class="btn btn-outline-success navbar-brand" href="{% url 'Login' %}">Login</a>                                           
             </div>
         </nav>
         <!-- Masthead-->
@@ -46,10 +48,10 @@
                 </div>
                 <!--Links para agregar nuevos objetos-->
                 <h3 class="mb-5">What do you want to add today?</h3>
-                <a class="btn-outline-light mb-3" href="{% url 'ArtistForm' %}">Add a new artist</a>          
-                <a class="btn-outline-light mb-3" href="{% url 'LabelCreate' %}">Add a new label</a> <!--ANTES ESTABA LabelForm, pero lo reemplacé para utilizar el CreateView en este nuevo-->  
-                <a class="btn-outline-light mb-3" href="{% url 'InstrumentForm' %}">Add a new instrument</a>   
-                <a class="btn-outline-light mb-3" href="{% url 'GenreForm' %}">Add a new genre</a>  
+                <a class="btn-outline-light mb-3" href="{% url 'ArtistForm' %}">Add a new Artist</a>          
+                <a class="btn-outline-light mb-3" href="{% url 'LabelCreate' %}">Add a new Label</a> <!--ANTES ESTABA LabelForm, pero lo reemplacé para utilizar el CreateView en este nuevo-->  
+                <a class="btn-outline-light mb-3" href="{% url 'InstrumentForm' %}">Add a new Instrument</a>   
+                <a class="btn-outline-light mb-3" href="{% url 'GenreForm' %}">Add a new Genre</a>  
             </div>
         </header>
 

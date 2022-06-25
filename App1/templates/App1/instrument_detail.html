@@ -1,0 +1,10 @@
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Instrument Detail</h1>
+<p>Name: <i>{{ instrument.name }}</i></p>
+<p>Type: <i>{{ instrument.type }}</i></p>
+<p>
+    <a class="btn-outline-light mb-3" href="{% url 'listInstrument' %}">Back</a>
+</p>     
+{% endblock %}

@@ -3,7 +3,7 @@
 {% load static %}
 {% block changingContent %}
 <h1 class="mb-5">Artists results</h1>
-<p>You've searched data from the artist: {{name}}</p>
+<p>You've searched data from the Artist: {{name}}</p>
 {% if artists %}
 <ul>
 {% for artist in artists %}
@@ -14,7 +14,7 @@
 {% else %}
 <p>No results!</p>
 {% endif %}
-<p>Wanna search another artist?</p>
+<p>Wanna search another Artist?</p>
 <form action="../artistResult/" method="GET">
     <input type="string" name="name" placeholder="Search an artist!">
     <input type="submit" value="Search">

@@ -1,0 +1,17 @@
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Listing Genre!</h1>
+<ul>
+    {% for genre in object_list %}
+        <li>
+            <p>Name: {{genre.name}}</p>
+            <p>
+                    <a class="btn-outline-light mb-3" href="{% url 'GenreDetail' genre.id %}">Detail</a>
+                    <a class="btn-outline-light mb-3" href="{% url 'GenreUpdate' genre.id %}">Update</a>
+                    <a class="btn-outline-light mb-3" href="{% url 'GenreDelete' genre.id %}">Delete</a>
+            </p>    
+        </li>
+    {% endfor %}
+</ul>    
+{% endblock %}
