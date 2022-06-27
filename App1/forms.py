@@ -5,19 +5,19 @@ from django.contrib.auth.models import User
 class ArtistForm(forms.Form):
     name = forms.CharField()
     nacionality = forms.CharField()
-
+    biography = forms.TextInput()
 class LabelForm(forms.Form): #No se utiliza más, ahora utilizamos LabelCreate en views
     name = forms.CharField()
     country = forms.CharField()
-
+    description = forms.TextInput()
 class InstrumentForm(forms.Form):
     name = forms.CharField()
     type = forms.CharField()
-
+    description = forms.TextInput()
 class GenreForm(forms.Form):
     name = forms.CharField()
     country_of_origin = forms.CharField()
-
+    description = forms.TextInput()
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
