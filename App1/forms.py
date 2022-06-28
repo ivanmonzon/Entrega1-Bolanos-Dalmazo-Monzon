@@ -19,13 +19,24 @@ class GenreForm(forms.Form):
     country_of_origin = forms.CharField()
 
 class UserRegisterForm(UserCreationForm):
+    name = forms.CharField()
+    lastname = forms.CharField()
     email = forms.EmailField()
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Repeat Password", widget=forms.PasswordInput)
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['name','lastname','username', 'email', 'password1', 'password2']
         help_texts = {k:"" for k in fields}
 
-    
+class UserEditForm(UserCreationForm):
+    first_name = forms.CharField(label="Name")
+    last_name = forms.CharField(label="Last Name")
+    email = forms.EmailField(label="Email")
+    password1 = forms.CharField(label="Change Password", widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Repeat Password", widget=forms.PasswordInput)
+    class Meta:
+        model = User
+        fields = ['first_name','last_name','username', 'email', 'password1', 'password2']
+        help_texts = {k:"" for k in fields}    
         
