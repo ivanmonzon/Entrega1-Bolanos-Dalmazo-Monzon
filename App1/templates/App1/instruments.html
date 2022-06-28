@@ -3,6 +3,7 @@
 {% load static %}
 {% block changingContent %}
 <h1 class="mb-5">Instruments</h1>
+<a class="btn-outline-light mb-3" href="{% url 'listInstrument' %}">List of Instrument</a>  
 <form action="../instrumentResult/" method="GET">
     <input type="string" name="name" placeholder="Search an instrument!">
     <input type="submit" value="Search">

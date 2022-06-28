@@ -1,0 +1,17 @@
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Listing Instrument!</h1>
+<ul>
+    {% for instrument in object_list %}
+        <li>
+            <p>Name: {{instrument.name}}</p>
+            <p>
+                    <a class="btn-outline-light mb-3" href="{% url 'InstrumentDetail' instrument.id %}">Detail</a>
+                    <a class="btn-outline-light mb-3" href="{% url 'InstrumentUpdate' instrument.id %}">Update</a>
+                    <a class="btn-outline-light mb-3" href="{% url 'InstrumentDelete' instrument.id %}">Delete</a>
+            </p>    
+        </li>
+    {% endfor %}
+</ul>    
+{% endblock %}
