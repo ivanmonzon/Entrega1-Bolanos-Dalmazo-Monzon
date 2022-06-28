@@ -156,6 +156,73 @@ class LabelDelete(LoginRequiredMixin,DeleteView):
     model = Label
     success_url = reverse_lazy('listLabels')
 
+class GenreList(ListView):
+    model = Genre
+    template_name = "App1/listGenre.html"
+
+class GenreDetail(LoginRequiredMixin, DetailView):
+    model = Genre
+    template_name = "App1/genre_detail.html"
+
+class GenreCreate(LoginRequiredMixin,CreateView):
+    model = Genre
+    success_url = reverse_lazy('genreAdded')
+    fields = ['name', 'country_of_origin', 'description']
+
+class GenreUpdate(LoginRequiredMixin,UpdateView):
+    model = Genre
+    success_url = reverse_lazy('listGenre')
+    fields = ['name', 'country_of_origin', 'description']
+
+class GenreDelete(LoginRequiredMixin,DeleteView):
+    model = Genre
+    success_url = reverse_lazy('listGenre')
+
+class ArtistList(ListView):
+    model = Artist
+    template_name = "App1/listArtist.html"
+
+class ArtistDetail(LoginRequiredMixin, DetailView):
+    model = Artist
+    template_name = "App1/artist_detail.html"
+
+class ArtistCreate(LoginRequiredMixin,CreateView):
+    model = Artist
+    success_url = reverse_lazy('artistAdded')
+    fields = ['name', 'nacionality', 'biography']
+
+class ArtistUpdate(LoginRequiredMixin,UpdateView):
+    model = Artist
+    success_url = reverse_lazy('listArtist')
+    fields = ['name', 'nacionality', 'biography']
+
+class ArtistDelete(LoginRequiredMixin,DeleteView):
+    model = Artist
+    success_url = reverse_lazy('listArtist')
+
+class InstrumentList(ListView):
+    model = Instrument
+    template_name = "App1/listInstrument.html"
+
+class InstrumentDetail(LoginRequiredMixin, DetailView):
+    model = Instrument
+    template_name = "App1/instrument_detail.html"
+
+class InstrumentCreate(LoginRequiredMixin,CreateView):
+    model = Instrument
+    success_url = reverse_lazy('instrumentAdded')
+    fields = ['name', 'type', 'description']
+
+class InstrumentUpdate(LoginRequiredMixin,UpdateView):
+    model = Instrument
+    success_url = reverse_lazy('listInstrument')
+    fields = ['name', 'type', 'description']
+
+class InstrumentDelete(LoginRequiredMixin,DeleteView):
+    model = Instrument
+    success_url = reverse_lazy('listInstrument')
+
+
 def login_request(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data = request.POST)
