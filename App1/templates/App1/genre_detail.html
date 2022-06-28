@@ -5,6 +5,7 @@
 <p>Name: <i>{{ genre.name }}</i></p>
 <p>Country: <i>{{ genre.country_of_origin }}</i></p>
 <p>Description: <i>{{ genre.description }}</i></p>
+<img src="{{ genre.img.url }}">
 <p>
     <a class="btn-outline-light mb-3" href="{% url 'listGenre' %}">Back</a>
 </p>     

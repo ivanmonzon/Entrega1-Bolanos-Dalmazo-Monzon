@@ -4,7 +4,8 @@
 <h1 class="mb-5">Instrument Detail</h1>
 <p>Name: <i>{{ instrument.name }}</i></p>
 <p>Type: <i>{{ instrument.type }}</i></p>
-<p>Description: <i>{{ genre.description }}</i></p>
+<p>Description: <i>{{ instrument.description }}</i></p>
+<img src="{{ instrument.img.url }}">
 <p>
     <a class="btn-outline-light mb-3" href="{% url 'listInstrument' %}">Back</a>
 </p>     

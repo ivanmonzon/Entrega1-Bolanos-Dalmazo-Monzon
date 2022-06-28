@@ -5,6 +5,7 @@
 <p>Name: <i>{{ artist.name }}</i></p>
 <p>Nacionality: <i>{{ artist.nacionality }}</i></p>
 <p>Biography: <i>{{ artist.biography }}</i></p>
+<img src="{{ artist.img.url }}">
 <p>
     <a class="btn-outline-light mb-3" href="{% url 'listArtist' %}">Back</a>
 </p>     
