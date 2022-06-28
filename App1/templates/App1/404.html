@@ -1,0 +1,8 @@
+{% extends 'App1/father2.html' %}
+{% load static %}
+{% block changingContent %}
+<h1 class="mb-5">Error 404. Page not found!</h1>
+<p>Sorry, this page is missing or does not exist</p>
+<a class="btn btn-primary" href="{% url 'Index' %}">Back to the index</a>
+
+{% endblock %}

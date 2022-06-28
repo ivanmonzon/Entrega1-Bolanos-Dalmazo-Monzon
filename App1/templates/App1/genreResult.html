@@ -3,7 +3,7 @@
 {% load static %}
 {% block changingContent %}
 <h1 class="mb-5">Genres results</h1>
-<p>You've searched data from the genre: {{name}}</p>
+<p>You've searched data from the Genre: {{name}}</p>
 {% if genres %}
 <ul>
 {% for genre in genres %}
@@ -14,7 +14,7 @@
 {% else %}
 <p>No results!</p>
 {% endif %}
-<p>Wanna search another genre?</p>
+<p>Wanna search another Genre?</p>
 <form action="../genreResult/" method="GET">
     <input type="string" name="name" placeholder="Search a genre!">
     <input type="submit" value="Search">

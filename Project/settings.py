@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 from django.urls import reverse_lazy
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9%#874ys$4-3$u*a6(nf@yds@5sdy6b#v944&-eluf9fywgw3j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -118,9 +118,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+#cambiamos estas carpetas para que funcione bien con el debug=false y para que pueda traer correctamente las imagenes de media_url y media_root
+STATIC_URL = '/static/'
+MEDIA_URL = '/App1/assets/img/'
 
-STATIC_URL = 'static/'
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+MEDIA_ROOT = os.path.join(BASE_DIR, '/static/App1/assets/img')        
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

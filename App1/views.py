@@ -1,4 +1,3 @@
-from audioop import reverse
 from django.shortcuts import render
 #Importamos los modelos
 from App1.models import Artist, Label, Instrument, Genre
@@ -18,6 +17,10 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, "App1/index.html")
 #Comenzamos con las vistas relacionados a los artistas, en esta primera view tenemos la opción de buscar al artista
+
+def error_404_view(request, exception):
+    return render(request, "App1/404.html")
+
 def artists(request):
     return render(request, "App1/artists.html")
 #En esta vista nos arroja el resultado de la busqueda de la vista de arriba
@@ -36,7 +39,7 @@ def artistForm(request):
         myForm = ArtistForm(request.POST)
         if myForm.is_valid():
             info = myForm.cleaned_data
-            artist = Artist (name=info['name'], nacionality=info['nacionality'])
+            artist = Artist (name=info['name'], nacionality=info['nacionality'], biography=info['biography'])
             artist.save()
             return render(request, "App1/artistAdded.html")
     else:
@@ -55,7 +58,7 @@ def labelForm(request): #VIEJO, el nuevo es label_form que utiliza el CreateView
         myForm = LabelForm(request.POST)
         if myForm.is_valid():
             info = myForm.cleaned_data
-            label = Label(name=info['name'], country=info['country'])
+            label = Label(name=info['name'], country=info['country'], description=info['description'])
             label.save()
             return render(request, "App1/labelAdded.html")
     else:
@@ -83,7 +86,7 @@ def instrumentForm(request):
         myForm = InstrumentForm(request.POST)
         if myForm.is_valid():
             info = myForm.cleaned_data
-            instrument = Instrument(name=info['name'], type=info['type'])
+            instrument = Instrument(name=info['name'], type=info['type'], description=info['description'])
             instrument.save()
             return render(request, "App1/instrumentAdded.html")
     else:
@@ -111,7 +114,7 @@ def genreForm(request):
         myForm = GenreForm(request.POST)
         if myForm.is_valid():
             info = myForm.cleaned_data
-            genre = Genre(name=info['name'], country_of_origin=info['country_of_origin'])
+            genre = Genre(name=info['name'], country_of_origin=info['country_of_origin'], description=info['description'] )
             genre.save()
             return render(request, "App1/genreAdded.html")
     else:
@@ -142,16 +145,83 @@ class LabelDetail(LoginRequiredMixin, DetailView):
 class LabelCreate(LoginRequiredMixin,CreateView):
     model = Label
     success_url = reverse_lazy('LabelAdded')
-    fields = ['name', 'country']
+    fields = ['name', 'country', 'description']
 
 class LabelUpdate(LoginRequiredMixin,UpdateView):
     model = Label
     success_url = reverse_lazy('listLabels')
-    fields = ['name', 'country']
+    fields = ['name', 'country', 'description']
 
 class LabelDelete(LoginRequiredMixin,DeleteView):
     model = Label
     success_url = reverse_lazy('listLabels')
+
+class GenreList(ListView):
+    model = Genre
+    template_name = "App1/listGenre.html"
+
+class GenreDetail(LoginRequiredMixin, DetailView):
+    model = Genre
+    template_name = "App1/genre_detail.html"
+
+class GenreCreate(LoginRequiredMixin,CreateView):
+    model = Genre
+    success_url = reverse_lazy('genreAdded')
+    fields = ['name', 'country_of_origin', 'description']
+
+class GenreUpdate(LoginRequiredMixin,UpdateView):
+    model = Genre
+    success_url = reverse_lazy('listGenre')
+    fields = ['name', 'country_of_origin', 'description']
+
+class GenreDelete(LoginRequiredMixin,DeleteView):
+    model = Genre
+    success_url = reverse_lazy('listGenre')
+
+class ArtistList(ListView):
+    model = Artist
+    template_name = "App1/listArtist.html"
+
+class ArtistDetail(LoginRequiredMixin, DetailView):
+    model = Artist
+    template_name = "App1/artist_detail.html"
+
+class ArtistCreate(LoginRequiredMixin,CreateView):
+    model = Artist
+    success_url = reverse_lazy('artistAdded')
+    fields = ['name', 'nacionality', 'biography']
+
+class ArtistUpdate(LoginRequiredMixin,UpdateView):
+    model = Artist
+    success_url = reverse_lazy('listArtist')
+    fields = ['name', 'nacionality', 'biography']
+
+class ArtistDelete(LoginRequiredMixin,DeleteView):
+    model = Artist
+    success_url = reverse_lazy('listArtist')
+
+class InstrumentList(ListView):
+    model = Instrument
+    template_name = "App1/listInstrument.html"
+
+class InstrumentDetail(LoginRequiredMixin, DetailView):
+    model = Instrument
+    template_name = "App1/instrument_detail.html"
+
+class InstrumentCreate(LoginRequiredMixin,CreateView):
+    model = Instrument
+    success_url = reverse_lazy('instrumentAdded')
+    fields = ['name', 'type', 'description']
+
+class InstrumentUpdate(LoginRequiredMixin,UpdateView):
+    model = Instrument
+    success_url = reverse_lazy('listInstrument')
+    fields = ['name', 'type', 'description']
+
+class InstrumentDelete(LoginRequiredMixin,DeleteView):
+    model = Instrument
+    success_url = reverse_lazy('listInstrument')
+
 
 def login_request(request):
     if request.method == "POST":

@@ -3,7 +3,7 @@
 {% load static %}
 {% block changingContent %}
 <h1 class="mb-5">Instruments results</h1>
-<p>You've searched data from the instrument: {{name}}</p>
+<p>You've searched data from the Instrument: {{name}}</p>
 {% if instruments %}
 <ul>
 {% for instrument in instruments %}
@@ -14,7 +14,7 @@
 {% else %}
 <p>No results!</p>
 {% endif %}
-<p>Wanna search another instrument?</p>
+<p>Wanna search another Instrument?</p>
 <form action="../instrumentResult/" method="GET">
     <input type="string" name="name" placeholder="Search an instrument!">
     <input type="submit" value="Search">

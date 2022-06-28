@@ -4,6 +4,8 @@
 <h1 class="mb-5">Label Detail</h1>
 <p>Name: <i>{{ label.name }}</i></p>
 <p>Country: <i>{{ label.country }}</i></p>
+<p>Description: <i>{{ label.description }}</i></p>
+<img src="{{ label.img.url }}">
 <p>
     <a class="btn-outline-light mb-3" href="{% url 'listLabels' %}">Back</a>
 </p>     
