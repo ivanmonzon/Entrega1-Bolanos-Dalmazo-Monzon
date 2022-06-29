@@ -32,3 +32,9 @@ class Genre(models.Model):
     def __str__(self):
         return f"Name: {self.name} - Country of origin: {self.country_of_origin}"
     
+class aboutMe(models.Model):
+    name=models.CharField(max_length=100)
+    description=models.CharField(max_length=1500)
+    def __str__(self):
+        return f"Name: {self.name} - Descrition: {self.description}"
+

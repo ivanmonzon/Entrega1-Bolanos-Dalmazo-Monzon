@@ -3,7 +3,7 @@ from django.shortcuts import render
 from App1.models import Artist, Label, Instrument, Genre
 from django.http import HttpResponse
 #importamos los formularios
-from App1.forms import ArtistForm, LabelForm, InstrumentForm, GenreForm, UserRegisterForm
+from App1.forms import ArtistForm, LabelForm, InstrumentForm, GenreForm, UserEditForm, UserRegisterForm
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -250,5 +250,27 @@ def sign_up(request):
     else:
         #form = UserCreationForm()
         form = UserRegisterForm()
-    return render(request, "App1/sign_up.html", {'form':form})             
+    return render(request, "App1/sign_up.html", {'form':form})      
 
+# Tener una vista de perfiles en el route accounts/profile/ la cual muestra la info de 
+# nuestro usuario y permite poder modificar y/o borrar: nombre - descripción -  email y contraseña.
+@login_required
+def editProfile(request):
+    username= request.user
+    if request.method == 'POST':
+        myForm =UserEditForm(request.POST, instance=username)
+        if myForm.is_valid():
+            info = myForm.cleaned_data    
+            username.first_name = info['first_name']
+            username.last_name = info['last_name']
+            username.email = info['email']
+            username.password1 = info['password1']
+            username.password2 = info['password2']
+            username.save()
+            return render(request, 'App1/index.html', {'username':username, 'message': 'Data Changed Successfully'})
+    else:
+        myForm = UserEditForm(instance=username)
+    return render(request, 'App1/editprofile.html', {'myForm':myForm, 'username':username}) 
+
+def aboutMe(request):
+    return render(request, "App1/about.html")

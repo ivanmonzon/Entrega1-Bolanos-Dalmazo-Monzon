@@ -50,5 +50,7 @@ urlpatterns = [
     path('login/', views.login_request, name='Login'),
     path('sign_up/', views.sign_up, name = 'SignUp'),
     path('logout/', LogoutView.as_view(template_name='App1/logout.html'), name = 'Logout'),
+    path('editprofile/', views.editProfile, name = 'editprofile'),
+    path('about/', views.aboutMe, name="About"),
 ]
 
