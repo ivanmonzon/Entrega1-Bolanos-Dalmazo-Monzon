@@ -37,6 +37,6 @@ class UserEditForm(UserCreationForm):
     password2 = forms.CharField(label="Repeat Password", widget=forms.PasswordInput)
     class Meta:
         model = User
-        fields = ['first_name','last_name','username', 'email', 'password1', 'password2']
+        fields = ['first_name','last_name', 'email', 'password1', 'password2']
         help_texts = {k:"" for k in fields}    
         
