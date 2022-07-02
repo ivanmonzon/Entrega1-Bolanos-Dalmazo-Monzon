@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9%#874ys$4-3$u*a6(nf@yds@5sdy6b#v944&-eluf9fywgw3j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -127,9 +127,12 @@ if DEBUG:
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+MEDIA_ROOT = "/static/App1/assets/img"
 MEDIA_ROOT = os.path.join(BASE_DIR, '/static/App1/assets/img')        
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
