@@ -35,6 +35,7 @@ class Genre(models.Model):
 class aboutMe(models.Model):
     name=models.CharField(max_length=100)
     description=models.CharField(max_length=1500)
+    img = models.ImageField(null=True, blank=True)
     def __str__(self):
         return f"Name: {self.name} - Descrition: {self.description}"
 
