@@ -119,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 #cambiamos estas carpetas para que funcione bien con el debug=false y para que pueda traer correctamente las imagenes de media_url y media_root
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 MEDIA_URL = '/App1/assets/img/'
 
 if DEBUG:
@@ -127,7 +127,7 @@ if DEBUG:
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-MEDIA_ROOT = "/static/App1/assets/img"
+MEDIA_ROOT = "/static/App1/assets/img/"
 MEDIA_ROOT = os.path.join(BASE_DIR, '/static/App1/assets/img')        
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

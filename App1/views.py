@@ -166,7 +166,7 @@ class GenreDetail(LoginRequiredMixin, DetailView):
 
 class GenreCreate(LoginRequiredMixin,CreateView):
     model = Genre
-    success_url = reverse_lazy('genreAdded')
+    success_url = reverse_lazy('GenreAdded')
     fields = ['name', 'country_of_origin', 'description']
 
 class GenreUpdate(LoginRequiredMixin,UpdateView):
@@ -188,7 +188,7 @@ class ArtistDetail(LoginRequiredMixin, DetailView):
 
 class ArtistCreate(LoginRequiredMixin,CreateView):
     model = Artist
-    success_url = reverse_lazy('artistAdded')
+    success_url = reverse_lazy('ArtistAdded')
     fields = ['name', 'nacionality', 'biography']
 
 class ArtistUpdate(LoginRequiredMixin,UpdateView):
@@ -210,7 +210,7 @@ class InstrumentDetail(LoginRequiredMixin, DetailView):
 
 class InstrumentCreate(LoginRequiredMixin,CreateView):
     model = Instrument
-    success_url = reverse_lazy('instrumentAdded')
+    success_url = reverse_lazy('InstrumentAdded')
     fields = ['name', 'type', 'description']
 
 class InstrumentUpdate(LoginRequiredMixin,UpdateView):

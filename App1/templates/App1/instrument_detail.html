@@ -5,7 +5,9 @@
 <p>Name: <i>{{ instrument.name }}</i></p>
 <p>Type: <i>{{ instrument.type }}</i></p>
 <p>Description: <i>{{ instrument.description }}</i></p>
+{% if instrument.img.url is not None %}
 <img src="{{ instrument.img.url }}">
+{% endif %}
 <p>
     <a class="btn-outline-light mb-3" href="{% url 'listInstrument' %}">Back</a>
 </p>     
