@@ -46,3 +46,6 @@ Adicionalmente al ingresar mediante “Update" se puede modificar la informació
 Cada uno de los miembros del grupo contribuyó de distintas maneras: Ilse Dalmazo, se encargó de que las url’s de editar y ver objetos redirijan a los templates indicados. 
 Jesandy Bolaños se encargó de crear todo lo relacionado con la vista de "About" y los formularios de edición y creación de usuario. Por Último, Ivan Monzón, se encargó de crear los modelos de género, artista e instrumento, Agregar imágenes y los botones de sign up y logout. 
 
+Adjuntamos el link del video explicativo sobre el funcionamiento de la web:
+https://drive.google.com/file/d/1VsruNdziCxc8QIjlSnRFafjFeFizPLy0/view?ts=62c4c3e2
+
